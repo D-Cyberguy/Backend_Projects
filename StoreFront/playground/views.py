@@ -1,19 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-
-# Create your views here.
+from django.core.exceptions import ObjectDoesNotExist
+from store.models import Product
 # request -> response
 # request handler
 
-# html test
-
-
-def calculate():
-    x = 1
-    y = 2
-    return x
-
 
 def say_hello(request):
-    x = calculate()
-    return render(request, 'hello.html', {'name': 'Ayomide'})
+    queryset = Product.objects.filter(title__iendswith='set')
+
+    return render(request, 'hello.html', {'name': 'Ayomide', 'products': list(queryset)})
