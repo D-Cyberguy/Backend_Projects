@@ -1,15 +1,9 @@
 from django.shortcuts import render
-from django.contrib.contenttypes.models import ContentType
-from store.models import Customer, Product
-from tags.models import TaggedItem
+from django.db import transaction
+from store.models import Order, OrderItem, Product, Customer
 # request -> response
 # request handler
 
-# products ordered & sort by title
-
-# get last 5 orders with their customers and items (incl product)
-
 
 def say_hello(request):
-    queryset = TaggedItem.objects.get_tags_for(Product, 1)
-    return render(request, 'hello.html', {'name': 'Ayomide', 'result': list(queryset)})
+    return render(request, 'hello.html', {'name': 'Mosh'})
